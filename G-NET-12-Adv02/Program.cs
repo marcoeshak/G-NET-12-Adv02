@@ -5,7 +5,7 @@
         static void Main(string[] args)
         {
             #region Starter Code
-            /*
+            
             public class Product
         {
             public int Id { get; set; }
@@ -27,12 +27,33 @@
          new Product { Id=9,Name="Headphones", Category="Electronics", Price=150, Stock=40 },
          new Product { Id=10, Name="Jacket", Category="Clothing", Price=120, Stock=15 }
           };
-            */
+
             #endregion
 
-            #region MyRegion
+            #region Task 01
+
+            // Method using Func delegate
+            static List<Product> SearchProducts(List<Product> products, Func<Product, bool> filter)
+            {
+                List<Product> result = new();
+
+                foreach (var product in products)
+                {
+                    if (filter(product))
+                        result.Add(product);
+                }
+
+                return result;
+            }
 
 
+            var electronics = SearchProducts(catalog, p => p.Category == "Electronics");
+
+            var cheap = SearchProducts(catalog, p => p.Price < 50);
+
+            var inStock = SearchProducts(catalog, p => p.Stock > 0);
+
+            var clothing = SearchProducts(catalog, p => p.Category == "Clothing" && p.Price < 100);
 
 
 
