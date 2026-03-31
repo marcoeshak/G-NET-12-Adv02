@@ -28,15 +28,15 @@
          new Product { Id=10, Name="Jacket", Category="Clothing", Price=120, Stock=15 }
           };
             */
-        #endregion
+            #endregion
 
-           #region MyRegion
-
-
+            #region MyRegion
 
 
 
-           #endregion
+
+
+            #endregion
 
 
 
