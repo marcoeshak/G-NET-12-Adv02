@@ -61,7 +61,7 @@
             #endregion
 
             #region Task 03.1
-
+            /*
             // Method using Action delegate
             static void PrintReport(List<Product> products, Action<Product> action)
             {
@@ -84,9 +84,44 @@
                 Console.WriteLine($"[{p.Category}] {p.Name} | Price: ${p.Price} | Stock: {p.Stock}");
             });
 
+            */
+            #endregion
+
+            #region Task 03.2
+
+            /*
+
+            // Method using Func delegate
+            static List<string> TransformProducts(List<Product> products, Func<Product, string> transformer)
+            {
+                List<string> result = new();
+
+                foreach (var product in products)
+                {
+                    result.Add(transformer(product));
+                }
+
+                return result;
+            }
 
 
+            var summary = TransformProducts(catalog, p => $"{p.Name} (${p.Price})");
 
+            foreach (var item in summary)
+            {
+                Console.WriteLine(item);
+            }
+
+            var labels = TransformProducts(catalog, p =>
+                p.Price > 100 ? $"{p.Name}: Expensive!" : $"{p.Name}: Affordable"
+            );
+
+            foreach (var item in labels)
+            {
+                Console.WriteLine(item);
+            }
+
+            */
 
             #endregion
 
