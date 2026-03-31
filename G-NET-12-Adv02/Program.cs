@@ -5,7 +5,8 @@
         static void Main(string[] args)
         {
             #region Starter Code
-            
+
+            /*
             public class Product
         {
             public int Id { get; set; }
@@ -27,37 +28,69 @@
          new Product { Id=9,Name="Headphones", Category="Electronics", Price=150, Stock=40 },
          new Product { Id=10, Name="Jacket", Category="Clothing", Price=120, Stock=15 }
           };
-
+            */
             #endregion
 
             #region Task 01
-
-            // Method using Func delegate
-            static List<Product> SearchProducts(List<Product> products, Func<Product, bool> filter)
-            {
-                List<Product> result = new();
-
-                foreach (var product in products)
+            /*
+                // Method using Func delegate
+                static List<Product> SearchProducts(List<Product> products, Func<Product, bool> filter)
                 {
-                    if (filter(product))
-                        result.Add(product);
+                    List<Product> result = new();
+
+                    foreach (var product in products)
+                    {
+                        if (filter(product))
+                            result.Add(product);
+                    }
+
+                    return result;
                 }
 
-                return result;
+
+                var electronics = SearchProducts(catalog, p => p.Category == "Electronics");
+
+                var cheap = SearchProducts(catalog, p => p.Price < 50);
+
+                var inStock = SearchProducts(catalog, p => p.Stock > 0);
+
+                var clothing = SearchProducts(catalog, p => p.Category == "Clothing" && p.Price < 100);
+
+            */
+
+            #endregion
+
+            #region Task 03.1
+
+            // Method using Action delegate
+            static void PrintReport(List<Product> products, Action<Product> action)
+            {
+                foreach (var product in products)
+                {
+                    action(product);
+                }
             }
 
 
-            var electronics = SearchProducts(catalog, p => p.Category == "Electronics");
 
-            var cheap = SearchProducts(catalog, p => p.Price < 50);
+            PrintReport(catalog, p =>
+            {
+                Console.WriteLine($"{p.Name} - ${p.Price}");
+            });
 
-            var inStock = SearchProducts(catalog, p => p.Stock > 0);
 
-            var clothing = SearchProducts(catalog, p => p.Category == "Clothing" && p.Price < 100);
+            PrintReport(catalog, p =>
+            {
+                Console.WriteLine($"[{p.Category}] {p.Name} | Price: ${p.Price} | Stock: {p.Stock}");
+            });
+
+
 
 
 
             #endregion
+
+
 
 
 
