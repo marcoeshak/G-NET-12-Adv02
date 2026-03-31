@@ -125,6 +125,32 @@
 
             #endregion
 
+            #region Task 03.3
+
+            // Method using Predicate delegate
+            static List<Product> FilterProducts(List<Product> products, Predicate<Product> condition)
+            {
+                List<Product> result = new();
+
+                foreach (var product in products)
+                {
+                    if (condition(product))
+                        result.Add(product);
+                }
+
+                return result;
+            }
+
+
+            var lowStock = FilterProducts(catalog, p => p.Stock < 20);
+
+            foreach (var product in lowStock)
+            {
+                Console.WriteLine($"[LOW STOCK] {product.Name}: only {product.Stock} left!");
+            }
+
+            #endregion
+
 
 
 
